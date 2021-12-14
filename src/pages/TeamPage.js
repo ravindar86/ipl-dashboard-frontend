@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MatchDetailCard } from '../components/MatchDetailCard';
 import { MatchSmallCard } from '../components/MatchSmallCard';
+import { PieChart } from 'react-minimal-pie-chart';
+
+import './TeamPage.scss';
 
 export const TeamPage = () => {
 
@@ -15,7 +18,6 @@ export const TeamPage = () => {
         const response = await fetch(`http://localhost:8081/teams/${teamName}`); // Rest API call
         const data = await response.json();
         setTeam(data);     // set response to the team state
-
       };
       fetchMatches();
     }, [teamName]);
@@ -26,13 +28,30 @@ export const TeamPage = () => {
 
   return (
     <div className="TeamPage">
+      <div className="team-name-section">
+        <h1 className='team-name'>{team.teamName}</h1>
+      </div>
 
-      <h1>{team.teamName}</h1>
+      <div className="win-loss-section">
+        Wins/Losses
+        <PieChart
+          data={[
+            { title: 'Losses', value: team.totalMatches - team.totalWins, color: '#C13C37' },           
+            { title: 'Wins', value: team.totalWins, color: '#E38627' },
+          ]}
+        />;
+      </div>
 
-      <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
+      <div className='match-detail-section'>
+         <h3>Latest Matches</h3>
+        <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
+      </div>
 
       {team.matches.slice(1).map(match => <MatchSmallCard match={match} teamName={team.teamName} key={match.id} />)}
 
+      <div className='more-link'>
+        <a href='#'>More ></a>
+      </div>
     </div>
   );
 }

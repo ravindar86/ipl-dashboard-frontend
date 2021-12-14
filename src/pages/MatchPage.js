@@ -21,13 +21,10 @@ export const MatchPage = () => {
 
   return (
     <div className="MatchPage">
-
         <h1>Match Page</h1>
         {
             matches.map(match => <MatchDetailCard teamName={teamName} match={match} key={match.id} />)
         }
-        
-     
     </div>
   );
 }
