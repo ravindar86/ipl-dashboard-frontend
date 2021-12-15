@@ -3,6 +3,7 @@ import {TeamPage} from './pages/TeamPage';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
 import { MatchPage } from './pages/MatchPage';
+import {HomePage} from './pages/HomePage';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
      <Router>
        <Routes>
         <Route path="/teams/:teamName/matches/:year" element={<MatchPage />} /> 
-        <Route path="/teams/:teamName" element={<TeamPage />} />            
+        <Route path="/teams/:teamName" element={<TeamPage />} />     
+        <Route path="/" element={<HomePage />} />            
        </Routes>        
      </Router>
      

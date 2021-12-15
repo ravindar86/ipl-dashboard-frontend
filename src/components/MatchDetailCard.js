@@ -23,9 +23,9 @@ export const MatchDetailCard = ({teamName, match}) => {
 
        <div className='additional-detail'>
           <h3>First Innings</h3>
-          <p>{match.team1}</p>
+          <p><Link to={`/teams/${match.team1}`}>{match.team1}</Link></p>
           <h3>Second Innings</h3>
-          <p>{match.team2}</p>
+          <p><Link to={`/teams/${match.team2}`}>{match.team2}</Link></p>
           <h3>Player of Match</h3>
           <p>{match.playerOfMatch}</p>
           <h3>Umpires</h3>
