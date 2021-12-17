@@ -1,12 +1,16 @@
 .HomePage{
-    .header-section{
-        font-size: 30px;
+    .app-name {
+        font-size: 4rem;
+        text-align: center;
+        margin: 30px auto;
     }
     .team-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 10px;
         grid-row-gap: 10px;
+        align-self: center;
+        justify-self: center;
       /*  & > div{
             justify-self: center;
             align-self: center;

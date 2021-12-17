@@ -11,7 +11,8 @@ export const HomePage = () => {
   useEffect(
     () => {
       const fetchTeams = async () => {
-        const response = await fetch(`http://localhost:8081/teams`); // Rest API call
+        //const response = await fetch(`http://localhost:8081/teams`); // Rest API call
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/teams`); // Rest API call
         const data = await response.json();
         setTeams(data);     // set response to the team state
       };
@@ -24,7 +25,7 @@ export const HomePage = () => {
         <h1 className='app-name'>IPL Dashboard</h1>
       </div>
       <div className='team-grid'>
-         {teams.map(team => <TeamTile teamName={team.teamName} />)}
+         {teams.map(team => <TeamTile teamName={team.teamName} key={team.teamName} />)}
       </div>
     </div>
   );

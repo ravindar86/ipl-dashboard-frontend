@@ -5,6 +5,7 @@ import { MatchSmallCard } from '../components/MatchSmallCard';
 import { PieChart } from 'react-minimal-pie-chart';
 
 import './TeamPage.scss';
+import { wait, waitFor } from '@testing-library/react';
 
 export const TeamPage = () => {
 
@@ -14,8 +15,7 @@ export const TeamPage = () => {
   useEffect(
     () => {
       const fetchMatches = async () => {
-        console.log(teamName);
-        const response = await fetch(`http://localhost:8081/teams/${teamName}`); // Rest API call
+        const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/teams/${teamName}`); // Rest API call
         const data = await response.json();
         setTeam(data);     // set response to the team state
       };
@@ -23,12 +23,14 @@ export const TeamPage = () => {
     }, [teamName]);
 
   if (!team || !team.teamName) {
-    return <h1>Team Name Not Found</h1>;
+    return <center><h1>Loading... Please wait...</h1></center>;
   }
 
   return (
     <div className="TeamPage">
+      
       <div className="team-name-section">
+        <h3 className='home-page-redirect'><Link to={`/`} > Home </Link></h3>
         <h1 className='team-name'>{team.teamName}</h1>
       </div>
 

@@ -3,4 +3,12 @@
     text-align: center;
     border: 1px solid white;
     padding: 20px;
+    background-color: black;
+
+    text-align: center;
+    
+    .teamName{
+        align-self: center;
+        justify-self: end;
+    }
 }

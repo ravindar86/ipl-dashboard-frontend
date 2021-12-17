@@ -6,7 +6,10 @@ import './TeamTile.scss';
 export const TeamTile = ({teamName}) => {
     return(
         <div className='TeamTile'>
-            <h1><Link to={`/teams/${teamName}`}>{teamName}</Link></h1>
+            <h1 className="teamName"><Link to={`/teams/${teamName}`}>{teamName}</Link></h1>
+            <Link to={`/teams/${teamName}`}>
+             <img src={require(`../images/${teamName}.jpg`)} />
+             </Link>
         </div>
     )
 }
